@@ -13,68 +13,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Livia von Wowerns Growth Marketing Short Cuts</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <!-- Futuristic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg1:#e6f3ff;
-      --bg2:#bfe2ff;
-      --bg3:#a8d8ff;
-      --glass: rgba(255,255,255,0.15);
-      --text:#0a2540;
-      --text-soft:#2b5a86;
-      --glow:#8fd3ff;
+    :root {
+      --glass: rgba(255, 255, 255, 0.12);
+      --text: #ffffff;
+      --text-soft: #dbe9ff;
+      --accent: #00e0ff;
     }
 
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Orbitron', sans-serif;
       min-height: 100vh;
       overflow-x: hidden;
-      background:
-        radial-gradient(1200px 800px at 10% 10%, rgba(255,255,255,0.7), transparent 60%),
-        linear-gradient(135deg, var(--bg1), var(--bg2) 50%, var(--bg3));
+      background: url("https://media.istockphoto.com/id/1402430797/sv/foto/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?s=612x612&w=0&k=20&c=Tz3aVFNMhsN-nE2e7nxNzlxfDPmlURNUH2Ua2kL-1hs=") 
+                  no-repeat center center fixed;
+      background-size: cover;
       color: var(--text);
       position: relative;
     }
 
-    .bg-shapes {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      z-index: 0;
-      pointer-events: none;
-      filter: blur(18px);
-      opacity: .55;
-    }
-    .bg-shapes span {
-      position: absolute;
-      display: block;
-      width: 240px; height: 240px;
-      background: radial-gradient(circle at 30% 30%, #ffffffaa, #87c9ff88 40%, #4db3ff55 70%, transparent 75%);
-      border-radius: 30% 70% 60% 40% / 40% 30% 70% 60%;
-      animation: drift 28s ease-in-out infinite, spin 60s linear infinite;
-      mix-blend-mode: screen;
-    }
-    .bg-shapes span:nth-child(1){ top: -60px; left: -40px; animation-duration: 32s; }
-    .bg-shapes span:nth-child(2){ top: 20%; right: -80px; width: 300px; height: 300px; animation-duration: 26s; }
-    .bg-shapes span:nth-child(3){ bottom: -80px; left: 15%; width: 340px; height: 340px; animation-duration: 34s; }
-    .bg-shapes span:nth-child(4){ bottom: 10%; right: 10%; width: 220px; height: 220px; animation-duration: 22s; }
-
-    @keyframes drift {
-      0%   { transform: translateY(0) translateX(0) scale(1); }
-      50%  { transform: translateY(-40px) translateX(20px) scale(1.05); }
-      100% { transform: translateY(0) translateX(0) scale(1); }
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
+    /* Softer overlay for visibility */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(1200px 800px at 80% 20%, rgba(255,255,255,0.35), transparent 60%),
-                  linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      background: rgba(0, 0, 40, 0.35);
       z-index: 0;
     }
 
@@ -96,82 +63,125 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     h1 {
       font-size: 3em;
       margin-bottom: 10px;
-      font-weight: 700;
-      color: var(--text);
-      text-shadow: 0 3px 20px rgba(143, 211, 255, 0.6);
+      font-weight: 800;
     }
 
     .subtitle {
       font-size: 1.2em;
       color: var(--text-soft);
-      margin-bottom: 40px;
+      margin-bottom: 20px;
     }
 
-    .hero-image {
-      max-width: 780px;
-      margin: 0 auto 50px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 20px 60px rgba(77, 179, 255, 0.35), 0 2px 10px rgba(0,0,0,0.06);
-      background: #fff;
-    }
-    .hero-image img{
-      width: 100%;
-      height: auto;
-      display: block;
+    .bio {
+      font-size: 1em;
+      line-height: 1.6em;
+      color: var(--text-soft);
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
+    /* Links grid */
     .links {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 25px;
       justify-content: center;
     }
 
+    /* Link cards */
     .link-card {
       background: var(--glass);
-      color: var(--text);
       padding: 20px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
       transition: all 0.3s ease;
       text-decoration: none;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
     }
 
     .link-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 18px 40px rgba(77, 179, 255, 0.35);
-      border-color: rgba(143, 211, 255, 0.9);
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 0 20px rgba(0, 224, 255, 0.4);
+      border-color: var(--accent);
+    }
+
+    /* New: crisp logo badge for visibility on dark/glassy background */
+    .logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      margin-bottom: 12px;
     }
 
     .logo {
-      width: 40px;
-      height: 40px;
+      width: 36px;
+      height: 36px;
       object-fit: contain;
-      margin-bottom: 12px;
-      filter: drop-shadow(0 0 14px rgba(143,211,255,0.8));
     }
 
     .link-label {
       font-weight: 600;
-      font-size: 1.05em;
+      font-size: 1em;
       color: var(--text);
     }
 
     footer {
-      margin-top: 60px;
+      margin-top: 70px;
       font-size: 0.9em;
       color: var(--text-soft);
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 2.2em; }
-      .link-card { max-width: 300px; margin: 0 auto; }
+      h1 { font-size: 2em; }
+      .link-card { max-width: 260px; margin: 0 auto; }
+    }
+
+    /* ===== Portfolio Section ===== */
+    #portfolio {
+      margin-top: 80px;
+      text-align: left;
+    }
+    #portfolio h2 {
+      font-size: 2.2em;
+      margin-bottom: 12px;
+    }
+    #portfolio .lead {
+      color: var(--text-soft);
+      line-height: 1.7em;
+      margin-bottom: 24px;
+      max-width: 900px;
+    }
+    .folio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .folio-item {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 16px;
+      padding: 16px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--text-soft);
     }
   </style>
 </head>
@@ -180,48 +190,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPZDT4SW"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-  <!-- Rörliga bakgrundsformer -->
-  <div class="bg-shapes" aria-hidden="true">
-    <span></span><span></span><span></span><span></span>
-  </div>
 
   <div class="container">
     <h1>Livia von Wowerns Growth Marketing Short Cuts</h1>
     <p class="subtitle">Viktiga länkar, kreativa verktyg & tillväxt i fokus!</p>
 
-    <!-- ✅ Hero Bild -->
-    <div class="hero-image">
-      <img
-        src="https://media.istockphoto.com/id/1402430797/sv/foto/business-3d-tablet-virtual-growth-arrow-financial-graph-on-digital-technology-strategy.jpg?s=612x612&w=0&k=20&c=Tz3aVFNMhsN-nE2e7nxNzlxfDPmlURNUH2Ua2kL-1hs="
-        alt="Kreativ tillväxt – graf och uppåtpil på en futuristisk bakgrund" />
-    </div>
+    <!-- ✨ Bio -->
+    <p class="bio">
+      Growth marketing represents the next frontier of business innovation.  
+      By uniting creativity, data, and technology, it enables strategies that outpace traditional marketing.  
+      Done right, growth marketing doesn’t just scale acquisition — it redefines how companies evolve,  
+      unlocking sustainable impact and long-term competitive advantage.
+    </p>
 
-    <!-- 🔗 Länkar -->
+    <!-- 🔗 Links -->
     <div class="links">
-      <a href="https://github.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <img class="logo" src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub logo">
+      <a href="https://github.com/" class="link-card" target="_blank" aria-label="GitHub">
+        <span class="logo-badge"><img class="logo" src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub logo"></span>
         <div class="link-label">GitHub</div>
       </a>
 
-      <a href="https://code.visualstudio.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Visual Studio Code">
-        <img class="logo" src="https://code.visualstudio.com/favicon.ico" alt="VS Code logo">
+      <a href="https://code.visualstudio.com/" class="link-card" target="_blank" aria-label="VS Code">
+        <span class="logo-badge"><img class="logo" src="https://code.visualstudio.com/favicon.ico" alt="VS Code logo"></span>
         <div class="link-label">VS Code</div>
       </a>
 
-      <a href="https://analytics.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Analytics">
-        <img class="logo" src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="Google Analytics logo">
+      <a href="https://analytics.google.com/" class="link-card" target="_blank" aria-label="Google Analytics">
+        <span class="logo-badge"><img class="logo" src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="Google Analytics logo"></span>
         <div class="link-label">Analytics</div>
       </a>
-      <a href="https://tagmanager.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Tag Manager">
-  <img class="logo" src="https://www.gstatic.com/tagmanager/static/images/tm_icon_48px.svg" alt="Google Tag Manager logo">
-  <div class="link-label">Tag Manager</div>
-</a>
 
-      <a href="https://docs.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Docs">
-        <img class="logo" src="https://docs.google.com/favicon.ico" alt="Google Docs logo">
+      <!-- ✅ Updated: official GTM product icon -->
+      <a href="https://tagmanager.google.com/" class="link-card" target="_blank" aria-label="Google Tag Manager">
+        <span class="logo-badge"><img class="logo" src="https://www.gstatic.com/images/branding/product/1x/tagmanager_48dp.png" alt="Google Tag Manager logo"></span>
+        <div class="link-label">Tag Manager</div>
+      </a>
+
+      <!-- ✅ Updated: more visible Google Docs icon + badge -->
+      <a href="https://docs.google.com/" class="link-card" target="_blank" aria-label="Google Docs">
+        <span class="logo-badge"><img class="logo" src="https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png" alt="Google Docs logo"></span>
         <div class="link-label">Documents</div>
       </a>
+
+      <a href="https://mail.google.com/" class="link-card" target="_blank" aria-label="Gmail">
+        <span class="logo-badge"><img class="logo" src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" alt="Gmail logo"></span>
+        <div class="link-label">Gmail</div>
+      </a>
+
+      <a href="https://www.linkedin.com/" class="link-card" target="_blank" aria-label="LinkedIn">
+        <span class="logo-badge"><img class="logo" src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn logo"></span>
+        <div class="link-label">LinkedIn</div>
+      </a>
+
+      <!-- New: internal link to the portfolio section -->
+      <a href="#portfolio" class="link-card" aria-label="Portfolio">
+        <span class="logo-badge"><img class="logo" src="https://www.svgrepo.com/show/522241/portfolio.svg" alt="Portfolio icon"></span>
+        <div class="link-label">Portfolio</div>
+      </a>
     </div>
+
+    <!-- ===== Portfolio "page" (in-page section) ===== -->
+    <section id="portfolio">
+      <h2>Portfolio & Vision</h2>
+      <p class="lead">
+        Aspirerande <strong>Growth Marketer</strong> med en stor kärlek för fotografering, 
+        all form av konst och rörelse. Jag hämtar energi i naturen och tror på företagande 
+        som gör verklig skillnad. Min långsiktiga ambition är att bygga varumärken och 
+        produkter som inte bara växer — utan även <em>återför</em>: att integrera 
+        mätbara klimatinitiativ, cirkulära affärsmodeller och community‑driven påverkan i
+        framtida bolag. Kort sagt: skapa tillväxt som gynnar människor <u>och</u> Moder Jord.
+      </p>
+
+      <div class="folio-grid">
+        <div class="folio-item">📸 Foto & visuellt berättande</div>
+        <div class="folio-item">📈 Experiment & funnel‑optimering</div>
+        <div class="folio-item">🤝 Community & varumärkesbyggande</div>
+        <div class="folio-item">🌿 Impact & hållbarhetsinitiativ</div>
+      </div>
+    </section>
 
     <footer>
       &copy; 2025 Livia von Wowern – Powered by creativity & growth 🌱
