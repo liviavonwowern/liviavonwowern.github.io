@@ -765,14 +765,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>Berghs School of Communication · Alumni 2026</p>
   </footer>
 <script>
-document.querySelector('.nav-cta').addEventListener('click', function() {
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({
-    'event': 'contact_click',
-    'button_text': 'Get in touch',
-    'button_location': 'header_nav',
-    'contact_email': 'livia.wowern@gmail.com'
-  });
+document.addEventListener('DOMContentLoaded', function() {
+  const contactBtn = document.querySelector('.nav-cta');
+  if (contactBtn) {
+    contactBtn.addEventListener('click', function() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'contact_click',
+        'button_text': 'Get in touch',
+        'button_location': 'header_nav',
+        'contact_email': 'livia.wowern@gmail.com'
+      });
+    });
+  }
 });
 </script>
 </body>
