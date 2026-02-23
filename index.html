@@ -1,200 +1,769 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
+  <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K4TDV6P3');</script>
 <!-- End Google Tag Manager -->
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Livia von Wowern</title>
 
-  <!-- Merriweather font -->
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --text:#ffffff;
-      --text-soft:#e8ecf6;
-      --accent:#00e0ff;
-      --glass:rgba(255,255,255,.12);
-      --card:rgba(255,255,255,.9);
-      --shadow:0 4px 14px rgba(0,0,0,.28);
-    }
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:'Merriweather', serif;
-      color:var(--text);
-      min-height:100vh; overflow-x:hidden;
-      background: #000 url("https://plus.unsplash.com/premium_photo-1701069017776-1d6363816001?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww")
-                  center center / cover no-repeat fixed;
-      position:relative;
-    }
-    @media (max-width:900px){ body{ background-attachment:scroll; } }
-
-    .container{ position:relative; z-index:2; max-width:1100px; margin:0 auto; padding:50px 20px 110px; }
-    header{text-align:center;margin-bottom:18px}
-    header h1{
-      font-weight:900; letter-spacing:.3px;
-      font-size:clamp(2.2rem,4vw,3.6rem); margin:0; line-height:1.05;
-      text-shadow:0 2px 18px rgba(0,0,0,.45);
+    :root {
+      --bg: #0b0c0e;
+      --surface: #131416;
+      --surface2: #1a1b1e;
+      --border: rgba(255,255,255,0.08);
+      --text: #f0ede8;
+      --text-soft: #8a8780;
+      --accent: #c9a96e;
+      --accent2: #e8d5b0;
+      --white: #ffffff;
     }
 
-    section{margin-top:36px}
-    .section-title{
-      font-weight:800; letter-spacing:.3px;
-      font-size:clamp(1.6rem,2.6vw,2.2rem); margin:0 0 12px;
-      text-shadow:0 1px 12px rgba(0,0,0,.35);
-    }
-    .lead{
-      color:var(--text-soft); line-height:1.8; margin:0 0 24px; max-width:900px;
-      text-shadow:0 1px 10px rgba(0,0,0,.35);
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .folio-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
-    .folio-item{
-      background:var(--glass);
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:16px; padding:18px; min-height:140px;
-      display:flex; align-items:center; justify-content:center; text-align:center;
-      color:var(--text-soft); font-weight:700; box-shadow:var(--shadow);
-      backdrop-filter:saturate(110%) blur(4px);
+    /* Subtle noise texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
     }
 
-    .links{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:25px; justify-content:center; margin-top:28px; }
-    .link-card{
-      background:var(--glass); backdrop-filter:blur(8px);
-      border:1px solid rgba(255,255,255,.22); border-radius:18px; padding:20px; color:var(--text);
-      text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11,12,14,0.85);
+      backdrop-filter: blur(12px);
     }
-    .link-card:hover{ transform:translateY(-6px) scale(1.03); box-shadow:0 0 24px rgba(0,224,255,.42); border-color:var(--accent); }
-    .logo-badge{ display:inline-flex; align-items:center; justify-content:center; width:56px; height:56px; border-radius:14px; background:var(--card); box-shadow:0 2px 8px rgba(0,0,0,.3); margin-bottom:12px; }
-    .logo{ width:36px; height:36px; object-fit:contain; }
-    .link-label{ font-weight:800; font-size:1rem; letter-spacing:.2px; }
 
-    footer{ margin-top:40px; font-size:.95rem; color:var(--text-soft); text-align:center; }
-    @media (max-width:640px){ .link-card{max-width:260px;margin:0 auto} .container{padding-bottom:130px} }
-
-    .contact{
-      position:fixed; right:22px; top:22px; z-index:5;
-      width:320px; max-width:calc(100vw - 32px);
-      background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.25);
-      border-radius:16px; padding:14px 16px; color:var(--text); box-shadow:var(--shadow);
-      backdrop-filter:blur(6px) saturate(120%);
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.05em;
     }
-    .contact h3{ margin:0 0 10px; font-size:1.05rem; font-weight:900; letter-spacing:.3px; }
-    .contact .row{ display:flex; align-items:center; gap:10px; margin:8px 0; line-height:1.4; }
-    .contact .icon{ width:20px; height:20px; opacity:.95; flex:0 0 auto; }
-    .contact a{ color:var(--text-soft); text-decoration:none; font-weight:700; word-break:break-word; }
-    .contact a:hover{ color:#fff; text-decoration:underline; }
-    .btn{ margin-top:8px; display:inline-flex; align-items:center; gap:8px; background:var(--card); color:#0a66c2; border-radius:12px; padding:10px 14px; font-weight:900; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,.25); transition:transform .2s ease, box-shadow .2s ease; }
-    .btn:hover{ transform:translateY(-2px); box-shadow:0 4px 14px rgba(0,0,0,.35); }
-    .btn .icon{ width:18px; height:18px; }id
-    .contact-toggle{ position:fixed; right:22px; bottom:22px; z-index:6; background:var(--card); color:#111827; border:none; border-radius:999px; padding:10px 14px; font-weight:900; box-shadow:var(--shadow); display:none; }
-    @media (max-width:540px){ .contact{display:none}.contact.open{display:block}.contact-toggle{display:inline-block} }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      padding: 9px 20px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+    @media (max-width: 680px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      padding: 80px 60px 80px 80px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.02;
+      color: var(--text);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-soft);
+      margin-bottom: 36px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-bio {
+      font-size: 0.93rem;
+      line-height: 1.9;
+      color: var(--text-soft);
+      max-width: 460px;
+      margin-bottom: 44px;
+      font-weight: 300;
+    }
+
+    .hero-bio strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      padding: 14px 32px;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .btn-primary:hover { background: var(--accent2); }
+
+    .btn-secondary {
+      padding: 14px 32px;
+      border: 1px solid var(--border);
+      color: var(--text-soft);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--text-soft); color: var(--text); }
+
+    /* ── PHOTO SIDE ──────────────────────────────── */
+    .hero-right {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-frame {
+      position: absolute;
+      inset: 80px 40px 40px 0;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: var(--surface2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--text-soft);
+    }
+
+    .photo-placeholder svg {
+      width: 48px;
+      height: 48px;
+      opacity: 0.3;
+    }
+
+    .photo-placeholder p {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.5;
+    }
+
+    /* If user adds an actual img inside .photo-frame */
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 52px;
+      left: 16px;
+      right: 52px;
+      padding: 16px 20px;
+      background: rgba(11,12,14,0.8);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .photo-caption p {
+      font-size: 0.7rem;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+    }
+
+    .photo-caption strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-right { display: none; }
+      .hero-left { padding: 100px 24px 60px; }
+    }
+
+    /* ── SKILLS ──────────────────────────────────── */
+    .skills-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 64px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-card {
+      padding: 40px 36px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      transition: background 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card:last-child { border-right: none; }
+
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .skill-card:hover { background: var(--surface2); }
+    .skill-card:hover::before { transform: scaleX(1); }
+
+    .skill-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: var(--border);
+      margin-bottom: 20px;
+      line-height: 1;
+    }
+
+    .skill-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      letter-spacing: 0.01em;
+    }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--text-soft);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    @media (max-width: 680px) {
+      .skills-section { padding: 70px 24px; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-card { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+
+    /* ── FOLIO TILES ─────────────────────────────── */
+    .folio-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .folio-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .folio-tile {
+      aspect-ratio: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px 20px;
+      gap: 12px;
+      transition: all 0.3s;
+    }
+
+    .folio-tile:hover {
+      background: var(--surface2);
+      border-color: var(--accent);
+    }
+
+    .folio-tile .tile-icon { font-size: 1.8rem; }
+
+    .folio-tile .tile-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+    }
+
+    @media (max-width: 680px) {
+      .folio-section { padding: 70px 24px; }
+      .folio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── CONTACT ─────────────────────────────────── */
+    .contact-section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 80px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-info h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-info h2 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-info p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.82rem;
+      transition: all 0.25s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contact-link .cl-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .contact-link .cl-value { font-weight: 500; }
+
+    .linkedin-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      background: var(--accent);
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      margin-top: 20px;
+      transition: background 0.25s;
+    }
+
+    .linkedin-btn:hover { background: var(--accent2); }
+
+    @media (max-width: 900px) {
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 70px 24px;
+      }
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 32px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 680px) {
+      footer {
+        flex-direction: column;
+        gap: 12px;
+        padding: 24px;
+        text-align: center;
+      }
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+    h1 { animation: fadeUp 0.7s 0.1s ease both; }
+    .hero-subtitle { animation: fadeUp 0.7s 0.2s ease both; }
+    .hero-bio { animation: fadeUp 0.7s 0.3s ease both; }
+    .hero-actions { animation: fadeUp 0.7s 0.4s ease both; }
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K4TDV6P3"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Mobile contact toggle -->
-  <button class="contact-toggle" aria-controls="contact-card" aria-expanded="false" onclick="
-    const c=document.getElementById('contact-card');
-    c.classList.toggle('open');
-    this.setAttribute('aria-expanded', c.classList.contains('open'));
-  ">Contact</button>
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">Livia von Wowern</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:livia.wowern@gmail.com" class="nav-cta">Get in touch</a>
+  </nav>
 
-  <!-- Contact Corner -->
-  <aside id="contact-card" class="contact" aria-label="Contact information">
-    <h3>Contact me</h3>
-    <div class="row">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
-      <a id="school__mail"  href="mailto:livia.von.wowern@berghs.student.se">livia.von.wowern@berghs.student.se</a>
-    </div>
-    <div class="row">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z" stroke="currentColor" stroke-width="1.6"/>
-        <path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.6"/>
-      </svg>
-      <a id="private__mail" href="mailto:liviavonwowern@icloud.com">liviavonwowern@icloud.com</a>
-    </div>
-    <a class="btn" href="https://www.linkedin.com/in/livia-von-wowern-b5a18633a" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile — Livia von Wowern">
-      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="#0a66c2" d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.1c.7-1.3 2.3-2.6 4.7-2.6 5 0 5.9 3.3 5.9 7.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4v7.6H8V8z"/></svg>
-      Connect on LinkedIn
-    </a>
-  </aside>
+  <!-- ── HERO ── -->
+  <section class="hero" id="about">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Growth Marketing Specialist</div>
 
-  <div class="container">
-    <header><h1>Livia von Wowern</h1></header>
+      <h1>Livia<br>von <em>Wowern</em></h1>
+      <p class="hero-subtitle">Where data meets creativity.</p>
 
-    <section id="portfolio">
-      <h2 class="section-title">Portfolio & Vision</h2>
-      <p class="lead">
-        Aspiring <strong>Growth Marketer</strong> with a love for photography, art, and motion.
-        I’m energized by nature and driven to build brands that make a real difference.
-        My long-term goal is to create companies that grow while giving back—integrating measurable
-        climate initiatives, circular business models, and community-driven impact.
+      <p class="hero-bio">
+        I'm a <strong>Berghs-certified Growth Marketer</strong> with a passion for building brands
+        that grow with purpose. My work sits at the intersection of performance marketing,
+        customer behaviour, and AI-powered search — helping companies convert visibility
+        into measurable revenue.<br><br>
+        Beyond the numbers, I'm drawn to photography, art, and the natural world.
+        I believe the best growth strategies are built on genuine human insight —
+        and that sustainable business and ambitious performance are never mutually exclusive.
       </p>
-      <div class="folio-grid">
-        <div class="folio-item">📸 Visual storytelling & photography</div>
-        <div class="folio-item">📈 Experimentation & funnel optimization</div>
-        <div class="folio-item">🤝 Community building & brand strategy</div>
-        <div class="folio-item">🌿 Impact & sustainability initiatives</div>
+
+      <div class="hero-actions">
+        <a href="#skills" class="btn-primary">View my skills</a>
+        <a href="#contact" class="btn-secondary">Let's talk</a>
       </div>
-    </section>
+    </div>
 
-    <section id="shortcuts">
-      <h2 class="section-title" style="margin-top:32px;">Shortcuts</h2>
-      <p class="lead">My frequently used tools and workspaces.</p>
-      <div class="links">
-        <a href="https://github.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <span class="logo-badge"><img class="logo" src="https://github.githubassets.com/favicons/favicon.svg" alt="GitHub" loading="lazy" decoding="async"></span>
-          <div class="link-label">GitHub</div>
-        </a>
-        <a href="https://code.visualstudio.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="VS Code">
-          <span class="logo-badge"><img class="logo" src="https://code.visualstudio.com/favicon.ico" alt="VS Code" loading="lazy" decoding="async"></span>
-          <div class="link-label">VS Code</div>
-        </a>
-        <a href="https://analytics.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Analytics">
-          <span class="logo-badge"><img class="logo" src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="Google Analytics" loading="lazy" decoding="async"></span>
-          <div class="link-label">Analytics</div>
-        </a>
-
-        <!-- Tag Manager card -->
-        <a href="https://tagmanager.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Tag Manager">
-          <span class="logo-badge">
-            <img
-              class="logo"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4cEQ_gB6ddnWefziMZ3MfPSZ_flEyVob_Ng&s"
-              alt="Google Tag Manager"
-              loading="lazy"
-              decoding="async"
-            >
-          </span>
-          <div class="link-label">Tag Manager</div>
-        </a>
-
-        <a href="https://docs.google.com/" class="link-card" target="_blank" rel="noopener noreferrer" aria-label="Google Docs">
-          <span class="logo-badge"><img class="logo" src="https://www.gstatic.com/images/branding/product/1x/docs_2020q4_48dp.png" alt="Google Docs" loading="lazy" decoding="async"></span>
-          <div class="link-label">Google Docs</div>
-        </a>
+    <div class="hero-right">
+      <div class="photo-frame">
+        <!--
+          TO ADD YOUR PHOTO:
+          Replace the .photo-placeholder div below with:
+          <img src="your-photo.jpg" alt="Livia von Wowern">
+        -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          <p>Add your photo here</p>
+        </div>
       </div>
-    </section>
 
-    <footer>&copy; 2025 Livia von Wowern — Powered by creativity & growth 🌱</footer>
-  </div>
+      <div class="photo-caption">
+        <p><strong>Berghs School of Communication</strong> · Alumni 2024 · Stockholm</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section class="skills-section" id="skills">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-heading">What I <em>do</em></h2>
+
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-number">01</div>
+        <div class="skill-name">Performance Marketing</div>
+        <p class="skill-desc">Precision-driven campaigns built around data, not guesswork. From paid acquisition to full-funnel attribution — maximizing ROI at every stage.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-number">02</div>
+        <div class="skill-name">CRM & Kundlojalitet</div>
+        <p class="skill-desc">Building lasting customer relationships through smart segmentation, lifecycle marketing, and retention strategies that turn one-time buyers into loyal advocates.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-number">03</div>
+        <div class="skill-name">SEO & SEM</div>
+        <p class="skill-desc">Dominating both organic and paid search through technical SEO, keyword strategy, and continuously optimized ad campaigns that cut waste and scale what works.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-number">04</div>
+        <div class="skill-name">GEO & AI Visibility</div>
+        <p class="skill-desc">Optimizing for the new era of search — ensuring brands appear in AI-generated answers and generative engines, not just traditional blue links.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-number">05</div>
+        <div class="skill-name">Conversion Optimering</div>
+        <p class="skill-desc">Analyzing every touchpoint of the customer journey to remove friction, improve UX, and turn more traffic into revenue through rigorous A/B testing.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-number">06</div>
+        <div class="skill-name">Brand & Content Strategy</div>
+        <p class="skill-desc">Shaping how brands show up — with a distinct voice, compelling storytelling, and content that builds authority and earns trust over time.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOLIO TILES ── -->
+  <section class="folio-section">
+    <div class="section-label">Approach</div>
+    <h2 class="section-heading">Built on <em>real values</em></h2>
+
+    <div class="folio-grid">
+      <div class="folio-tile">
+        <span class="tile-icon">📸</span>
+        <span class="tile-label">Visual storytelling & photography</span>
+      </div>
+      <div class="folio-tile">
+        <span class="tile-icon">📈</span>
+        <span class="tile-label">Experimentation & funnel optimization</span>
+      </div>
+      <div class="folio-tile">
+        <span class="tile-icon">🤝</span>
+        <span class="tile-label">Community building & brand strategy</span>
+      </div>
+      <div class="folio-tile">
+        <span class="tile-icon">🌿</span>
+        <span class="tile-label">Impact & sustainability initiatives</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact-section" id="contact">
+    <div class="contact-info">
+      <div class="section-label">Contact</div>
+      <h2>Let's build something <em>great</em></h2>
+      <p>Whether you're looking to scale your digital presence, reduce marketing waste, or dominate search — I'd love to hear about your goals and explore how we can work together.</p>
+
+      <a href="https://www.linkedin.com/in/livia-von-wowern-b5a18633a" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM8 8h4.8v2.2h.1c.7-1.3 2.3-2.6 4.7-2.6 5 0 5.9 3.3 5.9 7.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4v7.6H8V8z"/></svg>
+        Connect on LinkedIn
+      </a>
+    </div>
+
+    <div class="contact-links">
+      <a href="mailto:livia.wowern@gmail.com" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z"/><path d="M4 7l8 6 8-6"/></svg>
+        <div>
+          <span class="cl-label">Personal email</span>
+          <span class="cl-value">livia.wowern@gmail.com</span>
+        </div>
+      </a>
+      <a href="mailto:livia.von.wowern@berghs.student.se" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h13A2.5 2.5 0 0 1 21 7.5v9A2.5 2.5 0 0 1 18.5 19h-13A2.5 2.5 0 0 1 3 16.5v-9Z"/><path d="M4 7l8 6 8-6"/></svg>
+        <div>
+          <span class="cl-label">School email</span>
+          <span class="cl-value">livia.von.wowern@berghs.student.se</span>
+        </div>
+      </a>
+      <a href="tel:0702294244" class="contact-link">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div>
+          <span class="cl-label">Phone</span>
+          <span class="cl-value">070-229 42 44</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2025 Livia von Wowern · Stockholm, Sweden</p>
+    <p>Berghs School of Communication · Alumni 2026</p>
+  </footer>
+
 </body>
 </html>
